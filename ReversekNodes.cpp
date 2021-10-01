@@ -33,18 +33,24 @@ void insertAtTail(node* &head,int val)
     temp->next=n;
     
 }
-node* reverse(node* &head)
+node* reverseknodes(node* &head,int k)
 {
     node* prevptr=NULL;
     node* currptr=head;
     node* nextptr;
-    while(currptr!=NULL)
+    int count=0;
+    while(currptr!=NULL && count<k)
     {
         nextptr=currptr->next;
         currptr->next=prevptr;
 
         prevptr=currptr;
         currptr=nextptr;
+        count++;
+    }
+    if(nextptr!=NULL)
+    {
+        head->next=reverseknodes(nextptr,k);
     }
     return prevptr;
 }
@@ -66,8 +72,9 @@ int main()
     insertAtTail(head,3);
     insertAtTail(head,4);
     insertAtTail(head,5);
+    insertAtTail(head,6);
     display(head);
     cout<<endl;
-    node* newhead=reverse(head);
+    node* newhead=reverseknodes(head,2);
     display(newhead);
 }
