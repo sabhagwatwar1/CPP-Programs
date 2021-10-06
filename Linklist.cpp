@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 #include<bits/stdc++.h>
 using namespace std;
 class node
@@ -72,22 +65,6 @@ void Deletion(node* &head,int val)
     temp->next=temp->next->next;
     delete todel;
 }
-node* rever(node* &head)
-{
-    node* prevptr=NULL;
-    node* currptr=head;
-    node* nextptr;
-    while(currptr!=NULL)
-    {
-        nextptr=currptr->next;
-        currptr->next=prevptr;
-
-        prevptr=currptr;
-        currptr=nextptr;
-    }
-    return prevptr;
-
-}
 int main()
 {
     node* head=NULL;
@@ -97,13 +74,10 @@ int main()
     insertAtHead(head,4);
     display(head);
     cout<<endl;
-    // Deletion(head,3);
-    // display(head);
-    // cout<<endl;
-    // DeleteAtHead(head);
-    // display(head);
-    // cout<<endl;
-    node* newnode=rever(head);
-    display(newnode);
+    Deletion(head,3);
+    display(head);
+    cout<<endl;
+    DeleteAtHead(head);
+    display(head);
+    cout<<endl;
 }
-
