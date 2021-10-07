@@ -4,9 +4,10 @@ void Merge(int arr[],int l,int mid,int r)
 {
     int n1=mid-l+1;
     int n2=r-mid;
-    
+
     int a[n1];
     int b[n2];
+
     for(int i=0;i<n1;i++)
     {
         a[i]=arr[l+i];
@@ -20,35 +21,38 @@ void Merge(int arr[],int l,int mid,int r)
     int k=l;
     while(i<n1 && j<n2)
     {
-         if(a[i]<b[j])
-         {
-             arr[k]=a[i];
-             k++,i++;
-         }
-         else
-         {
-             arr[k]=b[j];
-             k++,j++;
-         }
+        if(a[i]<b[j])
+        {
+            arr[k]=a[i];
+            k++;
+            i++;
+        }
+        else
+        {
+            arr[k]=b[j];
+            k++;
+            j++;
+            
+        }
     }
-    while (i<n1)
+    while(i<n1)
     {
         arr[k]=a[i];
-        k++,i++;
+        k++;
+        i++;
     }
     while(j<n2)
     {
         arr[k]=b[j];
-        k++,j++;
+        k++;
+        j++;
     }
-    
 }
-void MergeSort(int arr[],int l,int r)
+void MergeSort(int arr[],int l ,int r)
 {
     if(l<r)
     {
         int mid=(l+r)/2;
-
         MergeSort(arr,l,mid);
         MergeSort(arr,mid+1,r);
         Merge(arr,l,mid,r);
@@ -56,11 +60,17 @@ void MergeSort(int arr[],int l,int r)
 }
 int main()
 {
-    int arr[]={2,9,3,8,1};
-    MergeSort(arr,0,4);
-    for(int i=0;i<5;i++)
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++)
     {
-        cout<<arr[i]<<" ";
+        cin>>arr[i];
+
     }
-    cout<<endl;
+    MergeSort(arr,0,n-1);
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i];
+    }
 }
