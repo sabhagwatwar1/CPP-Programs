@@ -6,7 +6,7 @@ void swap(int arr[],int i,int j)
     arr[i]=arr[j];
     arr[j]=temp;
 }
-int Partition(int arr[],int l ,int r)
+int Partition(int arr[],int l,int r)
 {
     int pivot=arr[r];
     int i=l-1;
@@ -14,30 +14,36 @@ int Partition(int arr[],int l ,int r)
     {
         if(arr[j]<pivot)
         {
-            i++;
-            swap(arr,i,j);
+            
+        i++;
+        swap(arr,i,j);
         }
     }
     swap(arr,i+1,r);
     return i+1;
+
 }
-void QuickSort(int arr[],int l,int r)
+void Quicksort(int arr[],int l,int r)
 {
-    if (l<r)
+    if(l<r)
     {
         int pi=Partition(arr,l,r);
-        QuickSort(arr,l,pi-1);
-        QuickSort(arr,pi+1,r);
+        Quicksort(arr,l,pi-1);
+        Quicksort(arr,pi+1,r);
     }
-    
 }
 int main()
 {
-    int arr[]={1,9,2,8,5,7,6};
-    int n=sizeof(arr)/sizeof(arr[0]);
-    QuickSort(arr,0,n-1);
+    int n;
+    cin>>n;
+    int arr[n];
     for(int i=0;i<n;i++)
     {
-        cout<<arr[i]<<" ";
+        cin>>arr[i];
+    }
+    Quicksort(arr,0,n-1);
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i];
     }
 }
