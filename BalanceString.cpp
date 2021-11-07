@@ -54,7 +54,7 @@ bool isBal(string s)
 }
 int main()
 {
-    string s="[{}";
+    string s="([{}])";
     if(isBal(s))
     {
         cout<<"Balance";
